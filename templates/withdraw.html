@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    WITHDRAW
+{% endblock %}
+
+{% block main %}
+    <div>
+        <p class="h1 mt-5">Withdraw from funds.</p>
+        <p class="small">Enter amount only, without the symbol. E.g. 500. Money in kept in USD</p>
+    </div>
+    <form action="/withdraw" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="withdraw" name="withdraw" placeholder="Amount($)" required step=any type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">WITHDRAW</button>
+    </form>
+{% endblock %}

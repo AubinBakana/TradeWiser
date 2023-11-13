@@ -1,0 +1,79 @@
+/* Wrapping the body to fix footer to bottom */
+.footer {
+    background-color: rgb(240, 254, 240);
+    top: 3;
+    bottom: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    text-align: center;
+  }
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+#content-wrap {
+padding-bottom: 0;    /* Footer height */
+}
+
+/* A shaded box */
+.box {
+    background-color: rgb(252, 252, 252);
+    min-height: 30px;
+}
+
+/* hover effect on list items of this class */
+a.highlight:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+li:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+/* Insert space from body top to clear room for navbar */
+body::before {
+    display: block;
+    content: '';
+    height: 60px
+}
+
+/* Insert space before the footer */
+body::after {
+    display: block;
+    content: '';
+    height: 80px
+}
+
+/* Brand Sizes */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Brand Colours */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+
+.header{
+    position:sticky;
+    top: 0 ;
+}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deposit
+{% endblock %}
+
+{% block main %}
+    <div>
+        <p class="h1 mt-5">Deposit Funds.</p>
+        <p class="small">Enter amount only, without the symbol. E.g. 500. Money in kept in USD</p>
+    </div>
+    <form action="/deposit" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="deposit" name="deposit" placeholder="Amount($)" required step=any type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">DEPOSIT NOW</button>
+    </form>
+{% endblock %}
+
+

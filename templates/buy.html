@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    BUY
+{% endblock %}
+
+{% block main %}
+    <div>
+        <p class="h1 mt-3">Buy Stock.</p>
+        <p class="small">Enter a symbol for stock, and a positive integer for shares.</p>
+    </div>
+    <form action="/buy" method="post">
+        <div class="mt-2 mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" required type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" required type="number">
+        </div>
+        <button class="btn mb-3 btn-primary" type="submit">BUY NOW</button>
+    </form>
+    <div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10 col-sm-4">
+                <div class="h5">Companies</div>
+                <p class="text-secondary small"> Below: A list of company names you might be interested in. Visit Yahoo Finance if name is not list.</p>
+                <table class="table table-hover" data-toggle="table">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true" scope="col">Symbol</th>
+                            <th data-sortable="true" scope="col">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in companies %}
+                        <tr>
+                            <td>{{ company.symbol }}</td>
+                            <td>{{ company.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}

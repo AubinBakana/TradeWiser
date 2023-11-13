@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SIGN UP
+{% endblock %}
+
+{% block main %}
+<div class="container pb-3" id="message">
+    <div class="display-1 mb-3">SIGN UP</div>
+    <h5 class="small">*Required Field</h5>
+    <h5 class="small">Password must contain at least one of the following:</h5>
+    - 8 characters<br>
+    - A lowercase letter<br>
+    - A capital(uppercase)<br>
+    - A number
+</div>
+<div>
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <label for="username" class="display-5" for="birthday">Username</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username*" required type="text">
+        </div>
+        <div class="container mb-3">
+            <label class="display-5">Full Name</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="firstname" name="firstname" placeholder="Firstname*" required type="text">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="middlenames" name="middlenames" placeholder="Middle Names" type="text">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="lastname" name="lastname" placeholder="Last Name*" required type="text">
+        </div>
+        <div class="mb-3">
+            <label class="display-5" for="birthday">Birthday</label>
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="birthday" min="1823-12-31" name="birthday" placeholder="DD-MM-YYYY" required type="date" title="Maximum age is 200">
+        </div>
+        <div class="mb-3">
+            <label class="display-5" for="initialCredit">Deposit</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="initialCredit" name="initialCredit" placeholder="Starting Funds($)" step=any type="number">
+        </div>
+        <div class="container border-light mb-3">
+            <label class="display-5">Password</label>
+            <input class="form-control mx-auto w-auto" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password*" title="Must be at at least 8 characters long. Must contain at least 1 number, 1 uppercase, and 1 lowercase letter." required type="password">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Password Confirmation*" type="password">
+        </div><br>
+        <div class="form-check align-items-center border mt-1 mb-3 form-switch"><br>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <p class="small text-secondary">
+                        Terms & conditions: This is an app in development. Thank you for helping to test it. After agreeing you will be alowed to sign up. <br>
+                    </p>
+                    <input class="form-check-input" type="checkbox" id="terms" onclick="myFunction()"> <--- Agree to terms & conditions.
+                    <label class="form-check-label" for="terms"></label>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+          </div>
+          <p class="small text-warning" id="text" style="display:none">
+              Thank you for agreeing to terms & conditioins! You may now register.
+          </p>
+        <button class="btn btn-primary" type="submit" id="register">SIGN UP NOW</button>
+        <input type="reset" value="Reset">
+    </form>
+</div>
+{% endblock %}

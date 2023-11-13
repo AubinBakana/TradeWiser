@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- https://memegen.link/ -->
+    <img alt="{{ top }}" class="border img-fluid" src="https://api.memegen.link/images/buzz/{{ top | urlencode }}/{{ bottom | urlencode }}.gif?width=300" title="{{ top }}">
+    {% if top == 400 %}
+        <form>
+            <a class="btn btn-primary form-control m-3 w-auto" href="/">Try again</a>
+        </form>
+    {% elif top == 403 %}
+        <form>
+            <a class="btn btn-primary form-control m-3 w-auto" href="/login">Try Again</a>
+        </form>
+    {% elif top == 404 %}
+    <form>
+        <a class="btn btn-primary form-control m-3 w-auto" href="/quote">Try Again</a>
+    </form>
+    {% elif top == 409 %}
+        <form>
+            <a class="btn btn-primary form-control m-3 w-auto" href="/quote">TRY SOMETHING ELSE</a>
+        </form>
+    {% endif %}
+{% endblock %}

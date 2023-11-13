@@ -1,0 +1,13 @@
+cs50
+csv
+datetime
+decimal
+funcTools
+Flask
+Flask-Session
+os
+pytz
+urlib
+uuid
+requests
+werkzeug.security

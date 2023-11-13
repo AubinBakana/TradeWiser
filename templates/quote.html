@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <form action="/quote" method="post">
+        <div class="mt-5 mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">GET QUOTE</button>
+    </form>
+</div>
+<div class="section m-3 table-responsive">
+    {% if quote %}
+    <!-- Show Quote in 10 top currencies -->
+
+        <table class="table border table-hover">
+            <thead>
+                <tr>
+                    <td></th>
+                    <td>Symbol</th>
+                    <td>Name</th>
+                    <td>Price(US)</th>
+                    <td>Price(EUR)</th>
+                    <td>Price(CHF)</th>
+                    <td>Price(CI$)</th>
+                    <td>Price(GIP£)</th>
+                    <td>Price(GPB)</th>
+                    <td>Price(JOD)</th>
+                    <td>Price(OMR)</th>
+                    <td>Price(BHD))</th>
+                    <td>Price(KWD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>
+                    <form action="/buy" method="get">
+                        <input  type="hidden" name="symbol"  value="{{ quote['symbol'] }}">
+                        <input class="btn btn-outline-info" type="submit" value="BUY">
+                    </form>
+                </td>
+                <td>{{ quote["symbol"] }}</td>
+                <td>{{ quote["name"] }}</td>
+                <td>{{ quote["price"]|usd }}</td>
+                <td>{{ quote["price"]|eur }}</td>
+                <td>{{ quote["price"]|chf }}</td>
+                <td>{{ quote["price"]|kyd }}</td>
+                <td>{{ quote["price"]|gip }}</td>
+                <td>{{ quote["price"]|gbp }}</td>
+                <td>{{ quote["price"]|jod }}</td>
+                <td>{{ quote["price"]|cmr }}</td>
+                <td>{{ quote["price"]|bhd }}</td>
+                <td>{{ quote["price"]|kwd }}</td>
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Price(US)</th>
+                    <th>Price(EUR)</th>
+                    <th>Price(CHF)</th>
+                    <th>Price(CI$)</th>
+                    <th>Price(GIP£)</th>
+                    <th>Price(GPB)</th>
+                    <th>Price(JOD)</th>
+                    <th>Price(OMR)</th>
+                    <th>Price(BHD))</th>
+                    <th>Price(KWD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the database entries to display them in this table -->
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+<div>
+    <div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10 col-sm-4">
+                <div class="h5">Companies</div>
+                <p class="text-warning small"> Below: A list of company names you might be interested in.<br>
+                    Visit Yahoo Finance if company not table.</p>
+                <table class="table table-hover" data-toggle="table">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true" scope="col">Symbol</th>
+                            <th data-sortable="true" scope="col">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in companies %}
+                        <tr>
+                            <td>{{ company.symbol }}</td>
+                            <td>{{ company.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

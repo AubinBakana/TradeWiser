@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Watch
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <h2 class="h1 text-warning m-5 pb-1">Net Worth Fluctuation(Live Data)</h2>
+    {% if balance|length > 0 %}
+    <div class="table-responsive">
+        <table class="table table-border table-hover">
+            <tr>
+                <th class="table-success">Description</th>
+                <th>USD</th>
+                <th>EUR</th>
+                <th>CHF</th>
+                <th>KYD</th>
+                <th>GIP</th>
+                <th>GBP</th>
+                <th>JOD</th>
+                <th>CMR</th>
+                <th>BHD</th>
+                <th>KWD</th>
+            </tr>
+            <tr>
+                <th class="table-success">{{ "Funds" }}</th>
+                <td>{{ balance[0]["funds"] | usd }}</td>
+                <td>{{ balance[0]["funds"] | eur }}</td>
+                <td>{{ balance[0]["funds"] | chf }}</td>
+                <td>{{ balance[0]["funds"] | kyd }}</td>
+                <td>{{ balance[0]["funds"] | gip }}</td>
+                <td>{{ balance[0]["funds"] | gbp }}</td>
+                <td>{{ balance[0]["funds"] | jod }}</td>
+                <td>{{ balance[0]["funds"] | cmr }}</td>
+                <td>{{ balance[0]["funds"] | bhd }}</td>
+                <td>{{ balance[0]["funds"] | kwd }}</td>
+            </tr>
+            <tr>
+                <th class="table-success">{{ "Stock Holdings" }}</th>
+                <td>{{ balance[0]["stock"] | usd }}</td>
+                <td>{{ balance[0]["stock"] | eur }}</td>
+                <td>{{ balance[0]["stock"] | chf }}</td>
+                <td>{{ balance[0]["stock"] | kyd }}</td>
+                <td>{{ balance[0]["stock"] | gip }}</td>
+                <td>{{ balance[0]["stock"] | gbp }}</td>
+                <td>{{ balance[0]["stock"] | jod }}</td>
+                <td>{{ balance[0]["stock"] | cmr }}</td>
+                <td>{{ balance[0]["stock"] | bhd }}</td>
+                <td>{{ balance[0]["stock"] | kwd }}</td>
+            </tr>
+            <tr class="table-success text-">
+                <th class="table-success">{{ "Net Worth" }}</th>
+                <td>{{ balance[0]["net_worth"] | usd }}</td>
+                <td>{{ balance[0]["net_worth"] | eur }}</td>
+                <td>{{ balance[0]["net_worth"] | chf }}</td>
+                <td>{{ balance[0]["net_worth"] | kyd }}</td>
+                <td>{{ balance[0]["net_worth"] | gip }}</td>
+                <td>{{ balance[0]["net_worth"] | gbp }}</td>
+                <td>{{ balance[0]["net_worth"] | jod }}</td>
+                <td>{{ balance[0]["net_worth"] | cmr }}</td>
+                <td>{{ balance[0]["net_worth"] | bhd }}</td>
+                <td>{{ balance[0]["net_worth"] | kwd }}</td>
+            </tr>
+        </table>
+    </div>
+
+    {% else %}
+
+    <div class="small text-secondary">
+        No transactions to display<br>
+    </div>
+
+    {% endif %}
+</div>
+{% endblock %}
+

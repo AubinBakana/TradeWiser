@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tradings
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <div class="h1 pb-3">Monthly Stock Movement</div>
+    <div class="row justify-content-around p-3">
+        <div class="col-md-4 col">
+            <div class="box border-danger-subtle p-2 mb-3">
+                Monthly Holding:
+                <span class="h5 text-warning">
+                    {{ total_holdings|usd }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover" data-toggle="table">
+        <thead>
+            <tr>
+                <th data-sortable="true" scope="col">Date</th>
+                <th data-sortable="true" scope="col">Type</th>
+                <th data-sortable="true" scope="col">Symbol</th>
+                <th data-sortable="true" scope="col">Name</th>
+                <th data-sortable="true" scope="col">Shares</th>
+                <th data-sortable="true" scope="col">Price</th>
+                <th data-sortable="true" scope="col">Holding</th>
+                <th data-sortable="true" scope="col">Running Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the database entries, display content in table -->
+            {% for transaction in stock_movement %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.symbol }}</td>
+                    <td>{{ transaction.name }}</td>
+                    <td>{{ transaction.num_shares }}</td>
+                    <td>{{ transaction.price|usd }}</td>
+                    <td>{{ transaction.holdings|usd }}</td>
+                    <td>{{ transaction.running_balance|usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

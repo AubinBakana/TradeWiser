@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <p class="h1 pb-1">SUMMARY</p>
+    <div class="row justify-content-around p-1">
+        <div class="col-8">
+            <div class="box border-danger-subtle p-3 mb-1">
+                Net Worth:
+                <span class="display-5 text-warning">
+                    {{ net|usd }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-around p-1">
+        <div class="col-6">
+            <div class="box border-danger-subtle p-2 mb-1">
+                Funds:
+                <span class="h5 text-secondary">
+                    {{ balance|usd }}
+                </span>
+            </div>
+        </div>
+    <div class="row justify-content-around p-1">
+        <div class="row justify-content-around p-3">
+            <div class="col-6">
+                <div class="box border-danger-subtle p-2 mb-1">
+                    Total Holdings:
+                    <span class="h5 text-secondary">
+                        {{ total_holdings|usd }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <form action="/watch" method="get">
+                <input  type="hidden" name="watch"  value="">
+                <input class="btn btn-outline-success" type="submit" value="WATCH YOUR MONEY">
+            </form>
+        </div>
+</div>
+{% endblock %}
+

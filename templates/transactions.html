@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <p class="h1 pb-3">Transactions History</p>
+        <h1 class="small text-warning">
+            <span><strong class="test-primary">
+                Show all combined transactions: Deposit, Widthdrawls, Purchases, Sales.<br>
+            </strong></span>
+            IMPORTANT: The resulted table should be a UNION table that combines both stock & finance tables, ordered by date. However, SQLite does not support such operation.<br>
+            Using a JOIN statement only to have data to fill in this section for the purpose of CS50 final project submission.
+        </h1><br>
+        <table class="table table-hover" data-toggle="table">
+            <thead>
+                <tr>
+                    <th data-sortable="true" scope="col">Transaction ID</th>
+                    <th data-sortable="true" scope="col">Date</th>
+                    <th data-sortable="true" scope="col">Transaction Type</th>
+                    <th data-sortable="true" scope="col">Amount</th>
+                    <th data-sortable="true" scope="col">Running Balance</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <!-- Loop through the dictionary entries to display items in the table -->
+                {% for item in transactions %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.amount|usd}}</td>
+                    <td>{{ item.running_balance|usd }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
